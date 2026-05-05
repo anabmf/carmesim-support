@@ -20,11 +20,16 @@
             background-color: var(--soft-white);
         }
         header {
-            padding: 60px 20px;
+            padding: 40px 20px;
             text-align: center;
             background: white;
         }
-        h1 { font-size: 2.5em; margin-bottom: 10px; color: #222; }
+        .logo {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        h1 { font-size: 2.5em; margin: 10px 0; color: #222; }
         .tagline { font-size: 1.2em; color: var(--primary-crimson); font-weight: 500; margin-bottom: 30px; }
         
         .container { max-width: 900px; margin: 0 auto; padding: 20px; }
@@ -35,10 +40,8 @@
             height: auto;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
+            margin: 40px auto;
             display: block;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .section { margin-bottom: 60px; text-align: center; }
@@ -58,23 +61,36 @@
         .cta-group {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 20px;
             flex-wrap: wrap;
             margin-top: 30px;
         }
 
-        .btn {
-            padding: 15px 30px;
+        .app-store-badge img {
+            height: 50px; /* Standard badge height */
+            transition: opacity 0.2s;
+        }
+        .app-store-badge:hover img {
+            opacity: 0.8;
+        }
+        
+        .btn-request {
+            padding: 12px 24px;
+            border: 2px solid var(--primary-crimson);
+            color: var(--primary-crimson);
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
+            height: 22px; /* Matches visual weight of the SVG badge */
+            display: flex;
+            align-items: center;
             transition: all 0.2s;
         }
-        .btn-primary { background-color: var(--primary-crimson); color: white; }
-        .btn-primary:hover { background-color: var(--dark-crimson); transform: translateY(-2px); }
-        
-        .btn-secondary { border: 2px solid var(--primary-crimson); color: var(--primary-crimson); }
-        .btn-secondary:hover { background-color: #fdf2f2; }
+        .btn-request:hover {
+            background-color: #fdf2f2;
+            transform: translateY(-2px);
+        }
 
         .footer-links {
             margin-top: 80px;
@@ -91,6 +107,9 @@
 
 <header>
     <div class="container">
+        <!-- Logo Added Here -->
+        <img src="logo.png" alt="Carmesim Logo" class="logo">
+        
         <h1>Carmesim</h1>
         <p class="tagline">Where physical strategy meets digital innovation.</p>
         
@@ -102,12 +121,18 @@
             blend traditional tabletop depth with modern technology.
         </p>
 
-        <!-- Replace 'game-preview.png' with your actual image file -->
-        <img src="game-preview.png" alt="Carmesim Game Preview" class="hero-image">
+        <!-- Main Photo Changed -->
+        <img src="physicGame.png" alt="Carmesim Physical Game and App" class="hero-image">
 
         <div class="cta-group">
-            <a href="https://apps.apple.com" class="btn btn-primary">Download on App Store</a>
-            <a href="mailto:anabmota.abm@gmail.com?subject=Requesting Physical Board: Carmesim" class="btn btn-secondary">Request Physical Board</a>
+            <!-- Apple Call to Action changed to SVG Badge -->
+            <a href="https://apps.apple.com" class="app-store-badge">
+                <img src="USBlackBadge.svg" alt="Download on the App Store">
+            </a>
+            
+            <a href="mailto:anabmota.abm@gmail.com?subject=Requesting Physical Board: Carmesim" class="btn-request">
+                Request Physical Board
+            </a>
         </div>
     </div>
 </header>
