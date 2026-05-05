@@ -7,6 +7,7 @@
     <style>
         :root {
             --primary-crimson: #A52A2A;
+            --brand-purple: #834574;
             --dark-crimson: #800000;
             --soft-white: #fafafa;
             --text-gray: #444;
@@ -19,33 +20,81 @@
             padding: 0;
             background-color: var(--soft-white);
         }
+        
+        /* Header & Logo Alignment */
         header {
             padding: 40px 20px;
             text-align: center;
             background: white;
         }
-        .logo {
-            max-width: 150px;
-            height: auto;
-            margin-bottom: 20px;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 10px;
         }
-        h1 { font-size: 2.5em; margin: 10px 0; color: #222; }
-        .tagline { font-size: 1.2em; color: var(--primary-crimson); font-weight: 500; margin-bottom: 30px; }
-        
-        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-        
-        .hero-image {
-            width: 100%;
-            max-width: 800px;
+        .logo {
+            max-width: 100px;
             height: auto;
+        }
+        .brand-name {
+            font-size: 3em;
+            font-weight: 800;
+            color: var(--brand-purple);
+            margin: 0;
+        }
+
+        .tagline { font-size: 1.2em; color: var(--primary-crimson); font-weight: 500; margin-bottom: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+        /* CTA Section - Now higher up */
+        .cta-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin: 30px 0 50px 0;
+        }
+        .app-store-badge img {
+            height: 65px; /* Increased size */
+            transition: opacity 0.2s;
+        }
+        .btn-request {
+            padding: 18px 32px; /* Increased size */
+            border: 2px solid var(--primary-crimson);
+            color: var(--primary-crimson);
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin: 40px auto;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s;
+        }
+        .btn-request:hover {
+            background-color: #fdf2f2;
+            transform: translateY(-2px);
+        }
+
+        /* Dual Image Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        .grid-image {
+            width: 100%;
+            height: 400px; /* Forced same height */
+            object-fit: cover; /* Ensures images fill the area without distortion */
+            border-radius: 12px;
             display: block;
         }
 
-        .section { margin-bottom: 60px; text-align: center; }
-        .section h2 { font-size: 1.8em; color: #222; }
+        .section { margin-bottom: 60px; }
+        .section h2 { font-size: 1.8em; color: #222; text-align: center; }
 
         .validation-badge {
             display: inline-block;
@@ -58,40 +107,6 @@
             margin-bottom: 20px;
         }
 
-        .cta-group {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .app-store-badge img {
-            height: 50px; /* Standard badge height */
-            transition: opacity 0.2s;
-        }
-        .app-store-badge:hover img {
-            opacity: 0.8;
-        }
-        
-        .btn-request {
-            padding: 12px 24px;
-            border: 2px solid var(--primary-crimson);
-            color: var(--primary-crimson);
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            height: 22px; /* Matches visual weight of the SVG badge */
-            display: flex;
-            align-items: center;
-            transition: all 0.2s;
-        }
-        .btn-request:hover {
-            background-color: #fdf2f2;
-            transform: translateY(-2px);
-        }
-
         .footer-links {
             margin-top: 80px;
             padding: 40px 20px;
@@ -101,16 +116,25 @@
         }
         .footer-links a { color: var(--primary-crimson); text-decoration: none; margin: 0 15px; }
         .footer-links a:hover { text-decoration: underline; }
+
+        /* Responsive Fix for images */
+        @media (max-width: 768px) {
+            .image-grid { grid-template-columns: 1fr; }
+            .grid-image { height: auto; }
+            .brand-name { font-size: 2.2em; }
+        }
     </style>
 </head>
 <body>
 
 <header>
     <div class="container">
-        <!-- Logo Added Here -->
-        <img src="logo.png" alt="Carmesim Logo" class="logo">
+        <!-- Logo and Name side-by-side -->
+        <div class="logo-container">
+            <img src="logo.png" alt="Carmesim Logo" class="logo">
+            <h1 class="brand-name">Carmesim</h1>
+        </div>
         
-        <h1>Carmesim</h1>
         <p class="tagline">Where physical strategy meets digital innovation.</p>
         
         <div class="validation-badge">✓ Concept Validated & Tested</div>
@@ -121,11 +145,8 @@
             blend traditional tabletop depth with modern technology.
         </p>
 
-        <!-- Main Photo Changed -->
-        <img src="physicGame.png" alt="Carmesim Physical Game and App" class="hero-image">
-
+        <!-- CTA Buttons right after description -->
         <div class="cta-group">
-            <!-- Apple Call to Action changed to SVG Badge -->
             <a href="https://apps.apple.com" class="app-store-badge">
                 <img src="USBlackBadge.svg" alt="Download on the App Store">
             </a>
@@ -133,6 +154,12 @@
             <a href="mailto:anabmota.abm@gmail.com?subject=Requesting Physical Board: Carmesim" class="btn-request">
                 Request Physical Board
             </a>
+        </div>
+
+        <!-- Side-by-side images without shadow -->
+        <div class="image-grid">
+            <img src="physicGame.png" alt="Carmesim Physical Board" class="grid-image">
+            <img src="digitalGame.png" alt="Carmesim Digital App" class="grid-image">
         </div>
     </div>
 </header>
@@ -145,6 +172,17 @@
             extensive testing process. We refined the content and mechanics to ensure 
             a seamless interaction between the board and the screen. Designed for 
             teens and adults, it offers a private, data-free environment for play.
+        </p>
+    </div>
+
+    <!-- About Us Section -->
+    <div class="section">
+        <h2>About Us</h2>
+        <p>
+            Carmesim was developed by Ana Beatriz Mota, Camille Luppi, Carolina Momoli, 
+            Isabella Brum and Jordana Santos.
+            We are a group of designers and developers dedicated to creating meaningful, 
+            accessible experiences that bridge the gap between physical play and digital tools. 
         </p>
     </div>
 </div>
